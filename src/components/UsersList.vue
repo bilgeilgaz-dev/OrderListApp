@@ -17,7 +17,7 @@
       <div 
         :class="{'col-4 user-details': true, 'col-12': isMobile, 'mobile-selected-user': isMobile && isSelectedUserTodos}" 
         v-if="selectedUser">
-        <UserDetail 
+        <UserDetails
           :selectedUser="selectedUser"
           :isUserTodosExpanded="isUserTodosExpanded"
           @setIsUserTodosExpanded="setIsUserTodosExpanded"
@@ -26,7 +26,7 @@
         />
       </div>
       <div :class="{'col-4': true, 'col-12': isMobile}" v-if="selectedUser && selectedUserTodos && selectedUserTodos.length > 0 && isUserTodosExpanded">
-        <TodoDetail 
+        <TodoDetails
           :selectedUser="selectedUser"
           :selectedUserTodos="selectedUserTodos"
           @setSelectedUserTodos="setSelectedUserTodos"
@@ -38,14 +38,14 @@
 </template>
 
 <script>
-import UserDetail from './UserDetail';
-import TodoDetail from './TodoDetail';
+import UserDetails from './UserDetails';
+import TodoDetails from './TodoDetails';
 
 export default {
 
   components: {
-    UserDetail,
-    TodoDetail
+    UserDetails,
+    TodoDetails
   },
 
   data() {
