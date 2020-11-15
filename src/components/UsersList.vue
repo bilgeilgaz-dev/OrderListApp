@@ -2,7 +2,7 @@
   <div class="container my-4 mx-0">
     <div class="row">
       <div v-if="users" :class="{'col-4': !isMobile, 'col-12': isMobile, 'mobile-selected-user': isMobile && selectedUser}">
-        <h4>Users</h4>
+        <h4>{{ $t('usersList.users') }}</h4>
         <div class="row px-3" v-for="(user, index) in users" :key="index">
           <div 
             :class="{'user-list-row': true, 'selected-bg': (selectedUser && user.id === selectedUser.id)}"

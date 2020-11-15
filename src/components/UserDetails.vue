@@ -2,24 +2,32 @@
   <div>
     <div class="user-detail-header">
       <i v-if="isMobile" class="material-icons" @click="backToUserList">{{ $t('chevronLeft') }}</i>
-      <h4>UserDetails</h4>
+      <h4>{{ $t('userDetails.header', {name:selectedUser.name}) }}</h4>
     </div>
     <div class="todo-row" @click="getSelectedUserTodos">
-      <p>{{ selectedUser.name }}</p>
+      <p>{{ $t('userDetails.todos', {name:selectedUser.name}) }}</p>
       <i v-if="!isUserTodosExpanded || isMobile" class="material-icons">{{ $t('chevronRight') }}</i>
       <i v-if="isUserTodosExpanded && !isMobile" class="material-icons">{{ $t('chevronLeft') }}</i>
     </div>
     <div>
+      <label class="name">{{ $t('userDetails.name') }}</label>
       <p>{{ selectedUser.name }}</p>
+      <label>{{ $t('userDetails.email') }}</label>
       <p>{{ selectedUser.email }}</p>
+      <label>{{ $t('userDetails.address') }}</label>
       <p class="mb-0">{{ selectedUser.address.street }}</p>
       <p class="mb-0">{{ selectedUser.address.suite }}</p>
       <p class="mb-0"><span>City: </span>{{ selectedUser.address.city }}</p>
-      <p>{{ selectedUser.address.zipcode }}</p>
+      <p><span>{{ $t('userDetails.zipcode') }}</span>{{ selectedUser.address.zipcode }}</p>
+      <label>{{ $t('userDetails.phone') }}</label>
       <p>{{ selectedUser.phone }}</p>
+      <label>{{ $t('userDetails.website') }}</label>
       <p>{{ selectedUser.website }}</p>
+      <label>{{ $t('userDetails.companyName') }}</label>
       <p>{{ selectedUser.company.name }}</p>
+      <label>{{ $t('userDetails.companyTags') }}</label>
       <p>{{ selectedUser.company.catchPhrase }}</p>
+      <label>{{ $t('userDetails.companyBusiness') }}</label>
       <p> {{ selectedUser.company.bs }}</p>
     </div>
   </div>

@@ -2,7 +2,7 @@
 <div>
   <div class="todo-detail-header">
     <i v-if="isMobile" class="material-icons" @click="backToSelectedUser">{{ $t('chevronLeft') }}</i>
-    <h4>Todo details</h4>
+    <h4>{{ $t('todoDetails.header', {name:selectedUser.name}) }}</h4>
   </div>
   <div v-for="(todo, index) in selectedUserTodos" :key="index">
     <div class="todos-list-row-container">
@@ -12,9 +12,9 @@
         <i v-if="selectedTodo && todo.id === selectedTodo.id" class="material-icons">{{ $t('expandLess') }}</i>
       </div>
       <div v-if="selectedTodo && todo.id === selectedTodo.id">
-        <p class="mb-0 mx-2 completed status" v-if="todo.completed">Completed</p>
-        <p class="mb-0 mx-2 status" v-if="!todo.completed">Not completed</p>
-        <p :class="{'mb-0 mx-2': true, 'completed': todo.completed}">Id: {{todo.id}}</p>
+        <p class="mb-0 mx-2 completed status" v-if="todo.completed">{{ $t('todoDetails.statusCompleted') }}</p>
+        <p class="mb-0 mx-2 status" v-if="!todo.completed">{{ $t('todoDetails.statusNotCompleted') }}</p>
+        <p :class="{'mb-0 mx-2': true, 'completed': todo.completed}">{{ $t('todoDetails.id', {id: todo.id}) }}</p>
       </div>
     </div>
   </div>

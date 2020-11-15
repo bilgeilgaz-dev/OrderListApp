@@ -2,5 +2,30 @@
   "chevronRight":"chevron_right",
   "chevronLeft": "chevron_left",
   "expandMore": "expand_more",
-  "expandLess": "expand_less"
+  "expandLess": "expand_less",
+
+  "usersList": {
+    "users": "Users"
+  },
+
+  "userDetails": {
+    "header": "{name} User Details",
+    "name": "Name",
+    "email": "Email",
+    "address": "Address",
+    "zipcode": "Zipcode: ",
+    "phone": "Phone",
+    "website": "Website",
+    "companyName": "Company Name",
+    "companyTags": "Company Tags",
+    "companyBusiness": "Company Business",
+    "todos": "{name} Todos"
+  },
+
+  "todoDetails": {
+    "header": "{name} Todos Details",
+    "statusCompleted": "Status: Completed",
+    "statusNotCompleted": "Status: Not completed",
+    "id": "Id: {id}"
+  }
 }
