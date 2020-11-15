@@ -50,7 +50,6 @@ export default {
 
   data() {
     return {
-      users: [],
       selectedUser: null,
       isUserTodosExpanded: false,
       selectedUserTodos: []
@@ -58,6 +57,10 @@ export default {
   },
 
   computed: {
+    users() {
+      return this.$store.getters.getUsers;
+    },
+
     isMobile() {
       return screen.width < 500;
     },
@@ -100,19 +103,8 @@ export default {
     },
   },
 
-  created() {
-    this.$http
-      .get(`https://jsonplaceholder.typicode.com/users`)
-      .then( response => {
-        return response.json();
-      })
-      .then( data => {
-        const clonedData = JSON.parse(JSON.stringify(data));
-        this.users = clonedData
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  async created() {
+    await this.$store.dispatch('getData', 'users');
   }
 }
 </script>

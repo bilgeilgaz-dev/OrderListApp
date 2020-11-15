@@ -48,16 +48,14 @@ export default {
     },
   },
 
-  data() {
-    return {
-      allTodos: []
-    }
-  },
-
   computed: {
     isMobile() {
       return screen.width < 500;
     },
+
+    allTodos() {
+      return this.$store.getters.getAllTodos;
+    }
   },
 
   methods: {
@@ -82,19 +80,8 @@ export default {
     },
   },
 
-  created() {
-    this.$http
-      .get(`https://jsonplaceholder.typicode.com/todos`)
-      .then( response => {
-        return response.json();
-      })
-      .then( data => {
-        const clonedData = JSON.parse(JSON.stringify(data));
-        this.allTodos = clonedData
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  async created() {
+    await this.$store.dispatch('getData', 'todos');
   }
 }
 </script>
