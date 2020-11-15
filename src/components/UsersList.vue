@@ -1,22 +1,41 @@
 <template>
   <div class="container my-4 mx-0">
     <div class="row">
-      <div v-if="users" :class="{'col-4': !isMobile, 'col-12': isMobile, 'mobile-selected-user': isMobile && selectedUser}">
-        <h4>{{ $t('usersList.users') }}</h4>
+      <div
+        v-if="users"
+        :class="{
+          'col-4': !isMobile,
+          'col-12': isMobile,
+          'mobile-selected-user': isMobile && selectedUser
+        }"
+      >
+        <h4>{{ $t("usersList.users") }}</h4>
         <div class="row px-3" v-for="(user, index) in users" :key="index">
-          <div 
-            :class="{'user-list-row': true, 'selected-bg': (selectedUser && user.id === selectedUser.id)}"
+          <div
+            :class="{
+              'user-list-row': true,
+              'selected-bg': selectedUser && user.id === selectedUser.id
+            }"
             @click="selectUser(user)"
           >
             <p>{{ user.name }}</p>
-            <i v-if="!user.isSelectedUser" class="material-icons">{{ $t('chevronRight') }}</i>
-            <i v-if="user.isSelectedUser" class="material-icons">{{ $t('chevronLeft') }}</i>
+            <i v-if="!user.isSelectedUser" class="material-icons">{{
+              $t("chevronRight")
+            }}</i>
+            <i v-if="user.isSelectedUser" class="material-icons">{{
+              $t("chevronLeft")
+            }}</i>
           </div>
         </div>
       </div>
-      <div 
-        :class="{'col-4 user-details': true, 'col-12': isMobile, 'mobile-selected-user': isMobile && isSelectedUserTodos}" 
-        v-if="selectedUser">
+      <div
+        :class="{
+          'col-4 user-details': true,
+          'col-12': isMobile,
+          'mobile-selected-user': isMobile && isSelectedUserTodos
+        }"
+        v-if="selectedUser"
+      >
         <UserDetails
           :selectedUser="selectedUser"
           :isUserTodosExpanded="isUserTodosExpanded"
@@ -25,7 +44,15 @@
           @backToUserList="backToUserList"
         />
       </div>
-      <div :class="{'col-4': true, 'col-12': isMobile}" v-if="selectedUser && selectedUserTodos && selectedUserTodos.length > 0 && isUserTodosExpanded">
+      <div
+        :class="{ 'col-4': true, 'col-12': isMobile }"
+        v-if="
+          selectedUser &&
+            selectedUserTodos &&
+            selectedUserTodos.length > 0 &&
+            isUserTodosExpanded
+        "
+      >
         <TodoDetails
           :selectedUser="selectedUser"
           :selectedUserTodos="selectedUserTodos"
@@ -38,11 +65,10 @@
 </template>
 
 <script>
-import UserDetails from './UserDetails';
-import TodoDetails from './TodoDetails';
+import UserDetails from "./UserDetails";
+import TodoDetails from "./TodoDetails";
 
 export default {
-
   components: {
     UserDetails,
     TodoDetails
@@ -53,7 +79,7 @@ export default {
       selectedUser: null,
       isUserTodosExpanded: false,
       selectedUserTodos: []
-    }
+    };
   },
 
   computed: {
@@ -66,14 +92,13 @@ export default {
     },
 
     isSelectedUserTodos() {
-      if(this.selectedUserTodos && this.selectedUserTodos.length > 0) {
+      if (this.selectedUserTodos && this.selectedUserTodos.length > 0) {
         return true;
       }
     }
   },
-  
-  methods: {
 
+  methods: {
     setIsUserTodosExpanded(value) {
       this.isUserTodosExpanded = value;
     },
@@ -88,10 +113,10 @@ export default {
     },
 
     selectUser(user) {
-      if(this.selectedUser && this.selectedUser.id === user.id) {
+      if (this.selectedUser && this.selectedUser.id === user.id) {
         user.isSelectedUser = false;
         this.selectedUser = null;
-      } else if(this.selectedUser && this.selectedUser.id !== user.id){
+      } else if (this.selectedUser && this.selectedUser.id !== user.id) {
         this.isUserTodosExpanded = false;
         this.selectedUser.isSelectedUser = false;
         this.selectedUser = user;
@@ -100,13 +125,13 @@ export default {
         this.selectedUser = user;
         this.selectedUser.isSelectedUser = true;
       }
-    },
+    }
   },
 
   created() {
-    this.$store.dispatch('getUsers');
+    this.$store.dispatch("getUsers");
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -126,7 +151,7 @@ export default {
     height: 50px;
     margin-bottom: 5px;
     padding: 5px;
-    border-radius: 10px
+    border-radius: 10px;
   }
 
   .selected-bg {

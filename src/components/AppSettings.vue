@@ -2,23 +2,40 @@
   <div class="container">
     <div class="row p-4">
       <div class="col-sm-6">
-        <h5 class="m-4 pl-1">{{ $t('appSettings.header-1')}}</h5>
+        <h5 class="m-4 pl-1">{{ $t("appSettings.header-1") }}</h5>
         <div class="color" v-for="(color, index) in colors" :key="index">
-          <input type="radio" :id="color" :value="color" v-model="headerColor">
-          <label :class="(color === '#FF8000') ? 'orange' : color" :for="color">{{ $t(`appSettings.${color}`)}}</label>
+          <input
+            type="radio"
+            :id="color"
+            :value="color"
+            v-model="headerColor"
+          />
+          <label :class="color === '#FF8000' ? 'orange' : color" :for="color">{{
+            $t(`appSettings.${color}`)
+          }}</label>
         </div>
       </div>
 
       <div class="col-sm-6">
-        <h5 class="m-4 pl-1">{{ $t('appSettings.header-2')}}</h5>
+        <h5 class="m-4 pl-1">{{ $t("appSettings.header-2") }}</h5>
         <div class="font" v-for="(font, index) in fontFamilies" :key="index">
-          <input class="pt-3" type="radio" :id="font" :value="font" v-model="fontFamily">
-          <label :class="font" :for="font">{{ $t(`appSettings.${font}`)}}</label>
+          <input
+            class="pt-3"
+            type="radio"
+            :id="font"
+            :value="font"
+            v-model="fontFamily"
+          />
+          <label :class="font" :for="font">{{
+            $t(`appSettings.${font}`)
+          }}</label>
         </div>
       </div>
     </div>
     <div class="row btn-container p-4 mx-2">
-      <button class="btn btn-outline-secondary" @click="saveChanges">{{ $t('appSettings.save')}}</button>
+      <button class="btn btn-outline-secondary" @click="saveChanges">
+        {{ $t("appSettings.save") }}
+      </button>
     </div>
   </div>
 </template>
@@ -28,34 +45,33 @@ export default {
     return {
       headerColor: null,
       fontFamily: null,
-      colors: ['red', 'blue', '#FF8000', 'black'],
-      fontFamilies: ['sans-serif', 'Times', 'monospace', 'Courier']
-    }
+      colors: ["red", "blue", "#FF8000", "black"],
+      fontFamilies: ["sans-serif", "Times", "monospace", "Courier"]
+    };
   },
 
   methods: {
     changeHeaderColor() {
-      this.$emit('changeHeaderColor', this.headerColor);
+      this.$emit("changeHeaderColor", this.headerColor);
     },
 
     changeFontFamily() {
-      this.$emit('changeFontFamily', this.fontFamily);
+      this.$emit("changeFontFamily", this.fontFamily);
     },
 
     saveChanges() {
-      if(this.headerColor) {
+      if (this.headerColor) {
         this.changeHeaderColor();
       }
-      if(this.fontFamily) {
+      if (this.fontFamily) {
         this.changeFontFamily();
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 input {
   margin-left: 30px;
 }
@@ -68,7 +84,7 @@ input {
 }
 
 .orange {
-  background-color: #FF8000;
+  background-color: #ff8000;
 }
 
 .red {
@@ -116,9 +132,9 @@ input {
 }
 
 @media screen and (max-width: 500px) {
-  .font, label {
+  .font,
+  label {
     margin-bottom: 1rem;
   }
 }
-
 </style>

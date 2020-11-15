@@ -5,9 +5,9 @@
 
   <testsuite name="test"
     errors="0" failures="0" hostname="" id="" package="test" skipped="0"
-    tests="3" time="6.054" timestamp="">
+    tests="3" time="6.101" timestamp="">
   
-    <testcase name="Header is visible" classname="test" time="1.041" assertions="3">
+    <testcase name="Header is visible" classname="test" time="1.039" assertions="3">
 
     
 
@@ -16,7 +16,7 @@
     
     </testcase>
   
-    <testcase name="User-list, user details and todos details are visible" classname="test" time="2.710" assertions="9">
+    <testcase name="User-list, user details and todos details are visible" classname="test" time="2.776" assertions="9">
 
     
 
@@ -37,7 +37,7 @@
     
     </testcase>
   
-    <testcase name="Setting changes work" classname="test" time="2.303" assertions="11">
+    <testcase name="Setting changes work" classname="test" time="2.286" assertions="11">
 
     
 

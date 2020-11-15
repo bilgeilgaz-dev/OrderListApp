@@ -1,24 +1,33 @@
 <template>
   <div id="container" :style="cssProps">
     <div class="logo-container px-4" :style="cssProps">
-      <img src="./assets/logo.png" alt="logo" class="logo py-2" @click="showMainPage">
-      <img id="settings" src="./assets/settings.svg" alt="settings-icon" @click="goToSettings">
+      <img
+        src="./assets/logo.png"
+        alt="logo"
+        class="logo py-2"
+        @click="showMainPage"
+      />
+      <img
+        id="settings"
+        src="./assets/settings.svg"
+        alt="settings-icon"
+        @click="goToSettings"
+      />
     </div>
-    <AppSettings 
+    <AppSettings
       v-if="isSettings"
       @changeHeaderColor="changeHeaderColor"
       @changeFontFamily="changeFontFamily"
     />
-    <UsersList v-else/>
+    <UsersList v-else />
   </div>
 </template>
 
 <script>
-import UsersList from './components/UsersList';
-import AppSettings from './components/AppSettings';
+import UsersList from "./components/UsersList";
+import AppSettings from "./components/AppSettings";
 
 export default {
-
   components: {
     UsersList,
     AppSettings
@@ -26,19 +35,19 @@ export default {
 
   computed: {
     cssProps() {
-        return {
-          '--color': this.headerColor,
-          '--fontFamily': this.fontFamily
-        }
-    },
+      return {
+        "--color": this.headerColor,
+        "--fontFamily": this.fontFamily
+      };
+    }
   },
 
   data() {
     return {
       isSettings: false,
-      headerColor: '#FF8000',
-      fontFamily: ''
-    }
+      headerColor: "#FF8000",
+      fontFamily: ""
+    };
   },
 
   methods: {
@@ -58,7 +67,7 @@ export default {
       this.fontFamily = value;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
