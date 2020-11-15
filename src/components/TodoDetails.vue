@@ -1,15 +1,15 @@
 <template>
 <div>
   <div class="todo-detail-header">
-    <i v-if="isMobile" class="material-icons" @click="backToSelectedUser">chevron_left</i>
+    <i v-if="isMobile" class="material-icons" @click="backToSelectedUser">{{ $t('chevronLeft') }}</i>
     <h4>Todo details</h4>
   </div>
   <div v-for="(todo, index) in selectedUserTodos" :key="index">
     <div class="todos-list-row-container">
       <div :class="{'todos-list-row': true, 'completed': todo.completed}" @click="bringTodoDetails(todo)">
         <p class="mb-0">{{ todo.title }}</p>
-        <i v-if="!selectedTodo || todo.id !== selectedTodo.id" class="material-icons">expand_more</i>
-        <i v-if="selectedTodo && todo.id === selectedTodo.id" class="material-icons">expand_less</i>
+        <i v-if="!selectedTodo || todo.id !== selectedTodo.id" class="material-icons">{{ $t('expandMore') }}</i>
+        <i v-if="selectedTodo && todo.id === selectedTodo.id" class="material-icons">{{ $t('expandLess') }}</i>
       </div>
       <div v-if="selectedTodo && todo.id === selectedTodo.id">
         <p class="mb-0 mx-2 completed status" v-if="todo.completed">Completed</p>

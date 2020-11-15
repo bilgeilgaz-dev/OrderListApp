@@ -9,8 +9,8 @@
             @click="selectUser(user)"
           >
             <p>{{ user.name }}</p>
-            <i v-if="!user.isSelectedUser" class="material-icons">chevron_right</i>
-            <i v-if="user.isSelectedUser" class="material-icons">chevron_left</i>
+            <i v-if="!user.isSelectedUser" class="material-icons">{{ $t('chevronRight') }}</i>
+            <i v-if="user.isSelectedUser" class="material-icons">{{ $t('chevronLeft') }}</i>
           </div>
         </div>
       </div>

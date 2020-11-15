@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="user-detail-header">
-      <i v-if="isMobile" class="material-icons" @click="backToUserList">chevron_left</i>
+      <i v-if="isMobile" class="material-icons" @click="backToUserList">{{ $t('chevronLeft') }}</i>
       <h4>UserDetails</h4>
     </div>
     <div class="todo-row" @click="getSelectedUserTodos">
       <p>{{ selectedUser.name }}</p>
-      <i v-if="!isUserTodosExpanded || isMobile" class="material-icons">chevron_right</i>
-      <i v-if="isUserTodosExpanded && !isMobile" class="material-icons">chevron_left</i>
+      <i v-if="!isUserTodosExpanded || isMobile" class="material-icons">{{ $t('chevronRight') }}</i>
+      <i v-if="isUserTodosExpanded && !isMobile" class="material-icons">{{ $t('chevronLeft') }}</i>
     </div>
     <div>
       <p>{{ selectedUser.name }}</p>
