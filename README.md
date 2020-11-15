@@ -19,3 +19,7 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 
 ## Run tests
 npx  vue-cli-service test:e2e --url http://localhost:8080/
+
+## Project details
+
+Please check README.pdf file which describes the choices I made and why.
