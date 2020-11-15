@@ -5,24 +5,21 @@
     <h4>{{ $t('todoDetails.header', {name:selectedUser.name}) }}</h4>
   </div>
   <div v-for="(todo, index) in selectedUserTodos" :key="index">
-    <div class="todos-list-row-container">
-      <div :class="{'todos-list-row': true, 'completed': todo.completed}" @click="bringTodoDetails(todo)">
-        <p class="mb-0">{{ todo.title }}</p>
-        <i v-if="!selectedTodo || todo.id !== selectedTodo.id" class="material-icons">{{ $t('expandMore') }}</i>
-        <i v-if="selectedTodo && todo.id === selectedTodo.id" class="material-icons">{{ $t('expandLess') }}</i>
-      </div>
-      <div v-if="selectedTodo && todo.id === selectedTodo.id">
-        <p class="mb-0 mx-2 completed status" v-if="todo.completed">{{ $t('todoDetails.statusCompleted') }}</p>
-        <p class="mb-0 mx-2 status" v-if="!todo.completed">{{ $t('todoDetails.statusNotCompleted') }}</p>
-        <p :class="{'mb-0 mx-2': true, 'completed': todo.completed}">{{ $t('todoDetails.id', {id: todo.id}) }}</p>
-      </div>
-    </div>
+    <TodoListItem
+      :todo="todo"
+    />
   </div>
 </div>
 </template>
   
 <script>
+import TodoListItem from './TodoListItem';
+
 export default {
+  components: {
+    TodoListItem
+  },
+
   props: {
     selectedUser: {
       type: Object,
@@ -32,12 +29,6 @@ export default {
     selectedUserTodos: {
       type: Array,
       required: true
-    }
-  },
-
-  data() {
-    return {
-      selectedTodo: null
     }
   },
 
@@ -52,40 +43,11 @@ export default {
       this.$emit('setSelectedUserTodos', []);
       this.$emit('setIsUserTodosExpanded', false);
     },
-
-    bringTodoDetails(todo) {
-      if(this.selectedTodo && this.selectedTodo.id === todo.id) {
-        this.selectedTodo = null;
-      } else {
-        this.selectedTodo = todo;
-      }
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.todos-list-row-container {
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  margin-bottom: 5px;
-}
-
-.todos-list-row {
-  width: 100%;
-  align-items: center;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.completed {
-  opacity: 0.5;
-}
-
-.status {
-  border-top:1px solid lightgray;
-}
 
 @media screen and (max-width: 500px) {
   .todo-detail-header {
