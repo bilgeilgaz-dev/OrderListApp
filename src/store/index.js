@@ -30,21 +30,36 @@ export default new Vuex.Store({
   },
 
   actions: {
-    getData({commit}, param) {
+    getUsers({commit}) {
       Vue.http
-        .get(`https://jsonplaceholder.typicode.com/${param}`)
+        .get(`https://jsonplaceholder.typicode.com/users`)
         .then( response => {
           return response.json();
         })
         .then( data => {
+          /* to clone the original data */
           const clonedData = JSON.parse(JSON.stringify(data));
-          if(param === 'todos'){
-            commit('setAllTodos', clonedData);
-          } else if (param === 'users') {
-            commit('setUsers', clonedData);
-          }
+          commit('setUsers', clonedData);
         })
         .catch(error => {
+          /* error handling can be improved */
+          console.log(error);
+        });
+    },
+
+    getAllTodos({commit}) {
+      Vue.http
+        .get(`https://jsonplaceholder.typicode.com/todos`)
+        .then( response => {
+          return response.json();
+        })
+        .then( data => {
+          /* to clone the original data */
+          const clonedData = JSON.parse(JSON.stringify(data));
+          commit('setAllTodos', clonedData);
+        })
+        .catch(error => {
+          /* error handling can be improved */
           console.log(error);
         });
     },

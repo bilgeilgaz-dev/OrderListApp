@@ -80,8 +80,8 @@ export default {
     },
   },
 
-  async created() {
-    await this.$store.dispatch('getData', 'todos');
+  created() {
+    this.$store.dispatch('getAllTodos');
   }
 }
 </script>

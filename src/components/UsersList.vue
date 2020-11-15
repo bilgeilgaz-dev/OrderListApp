@@ -103,8 +103,8 @@ export default {
     },
   },
 
-  async created() {
-    await this.$store.dispatch('getData', 'users');
+  created() {
+    this.$store.dispatch('getUsers');
   }
 }
 </script>
